@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* replace 'background.jpg' with your image file */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .todo-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .delete-btn {
+            background-color: #ff6666;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>To-Do List Website</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <section>
+        <div class="todo-container">
+            <h2>Add Task</h2>
+            <!-- Add a label for the input -->
+            <label for="taskInput">Enter Task:</label>
+            <input type="text" id="taskInput" placeholder="Enter task...">
+            <button onclick="addTask()">Add</button>
+
+            <h2>Task List</h2>
+            <ul id="taskList">
+                <!-- Task items will be added here dynamically -->
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2023 To-Do List Website
+    </footer>
+
+    <script>
+        function addTask() {
+            var taskInput = document.getElementById('taskInput');
+            var taskList = document.getElementById('taskList');
+
+            if (taskInput.value.trim() !== '') {
+                var li = document.createElement('li');
+                li.innerHTML = taskInput.value + '<button class="delete-btn" onclick="deleteTask(this)">Delete</button>';
+                taskList.appendChild(li);
+                taskInput.value = '';
+            }
+        }
+
+        function deleteTask(btn) {
+            var li = btn.parentElement;
+            li.remove();
+        }
+    </script>
+
+</body>
+</html>
